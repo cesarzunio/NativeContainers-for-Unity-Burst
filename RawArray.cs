@@ -46,6 +46,8 @@ public unsafe struct RawArray<T> where T : unmanaged
         set => _ptr[index] = value;
     }
 
+    public ref T Get(int index) => ref _ptr[index];
+
     public void Dispose()
     {
         if (_ptr == null)

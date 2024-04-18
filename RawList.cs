@@ -36,19 +36,13 @@ public unsafe struct RawList<T> where T : unmanaged
         RequestCapacity(capacity);
     }
 
-    public RawList(int capacity, Allocator allocator, T valueDefault) : this(allocator, capacity)
-    {
-        for (int i = 0; i < Count; i++)
-        {
-            _data->Ptr[i] = valueDefault;
-        }
-    }
-
     public T this[int index]
     {
         get => _data->Ptr[index];
         set => _data->Ptr[index] = value;
     }
+
+    public ref T Get(int index) => ref _data->Ptr[index];
 
     public void Add(T item)
     {
