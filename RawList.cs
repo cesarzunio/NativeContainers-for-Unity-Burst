@@ -42,7 +42,9 @@ public unsafe struct RawList<T> where T : unmanaged
         set => _data->Ptr[index] = value;
     }
 
-    public ref T Get(int index) => ref _data->Ptr[index];
+    public ref T Ref(int index) => ref _data->Ptr[index];
+
+    public readonly T* Ptr(int index) => _data->Ptr + index;
 
     public void Add(T item)
     {
